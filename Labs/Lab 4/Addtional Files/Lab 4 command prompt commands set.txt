@@ -1,0 +1,653 @@
+---------------------------------------
+COMMAND PROMPT 1
+
+[10/08/23]seed@VM:~/.../Sniff_Spoof$ ping 10.10.10.10
+PING 10.10.10.10 (10.10.10.10) 56(84) bytes of data.
+^C
+--- 10.10.10.10 ping statistics ---
+15 packets transmitted, 0 received, 100% packet loss, time 14333ms
+
+[10/08/23]seed@VM:~/.../Sniff_Spoof$ ping 9.9.9.9
+PING 9.9.9.9 (9.9.9.9) 56(84) bytes of data.
+64 bytes from 9.9.9.9: icmp_seq=1 ttl=57 time=16.9 ms
+64 bytes from 9.9.9.9: icmp_seq=2 ttl=57 time=17.7 ms
+64 bytes from 9.9.9.9: icmp_seq=3 ttl=57 time=12.0 ms
+64 bytes from 9.9.9.9: icmp_seq=4 ttl=57 time=10.3 ms
+64 bytes from 9.9.9.9: icmp_seq=5 ttl=57 time=9.24 ms
+64 bytes from 9.9.9.9: icmp_seq=6 ttl=57 time=18.8 ms
+64 bytes from 9.9.9.9: icmp_seq=7 ttl=57 time=11.1 ms
+64 bytes from 9.9.9.9: icmp_seq=8 ttl=57 time=9.14 ms
+64 bytes from 9.9.9.9: icmp_seq=9 ttl=57 time=9.84 ms
+64 bytes from 9.9.9.9: icmp_seq=10 ttl=57 time=11.0 ms
+64 bytes from 9.9.9.9: icmp_seq=11 ttl=57 time=20.4 ms
+64 bytes from 9.9.9.9: icmp_seq=12 ttl=57 time=8.37 ms
+64 bytes from 9.9.9.9: icmp_seq=13 ttl=57 time=23.5 ms
+64 bytes from 9.9.9.9: icmp_seq=14 ttl=57 time=10.6 ms
+64 bytes from 9.9.9.9: icmp_seq=15 ttl=57 time=36.2 ms
+64 bytes from 9.9.9.9: icmp_seq=16 ttl=57 time=11.0 ms
+64 bytes from 9.9.9.9: icmp_seq=17 ttl=57 time=13.2 ms
+^C
+--- 9.9.9.9 ping statistics ---
+17 packets transmitted, 17 received, 0% packet loss, time 16085ms
+rtt min/avg/max/mdev = 8.374/14.660/36.173/6.909 ms
+[10/08/23]seed@VM:~/.../Sniff_Spoof$ ifconfig
+br-3cb06be4a02f: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.9.0.1  netmask 255.255.255.0  broadcast 10.9.0.255
+        inet6 fe80::42:3ff:fe25:761f  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:03:25:76:1f  txqueuelen 0  (Ethernet)
+        RX packets 8  bytes 560 (560.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 127  bytes 11804 (11.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:fe:35:b3:ac  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::8cf9:1918:9dc:7172  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:6b:39:e6  txqueuelen 1000  (Ethernet)
+        RX packets 103387  bytes 114109989 (114.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 38477  bytes 4280545 (4.2 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 14472  bytes 1351909 (1.3 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 14472  bytes 1351909 (1.3 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth9314259: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::d008:3fff:fe0c:d4ae  prefixlen 64  scopeid 0x20<link>
+        ether d2:08:3f:0c:d4:ae  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 206  bytes 19593 (19.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth39aa4f1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::2830:5fff:fe84:3556  prefixlen 64  scopeid 0x20<link>
+        ether 2a:30:5f:84:35:56  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 207  bytes 19723 (19.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth69442df: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::7876:23ff:fe9b:8f68  prefixlen 64  scopeid 0x20<link>
+        ether 7a:76:23:9b:8f:68  txqueuelen 0  (Ethernet)
+        RX packets 8  bytes 672 (672.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 211  bytes 19851 (19.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+Traceback (most recent call last):
+  File "sniff.py", line 12, in <module>
+    pkt = sniff(filter='icmp',iface="br-3cb06be4a02f", count=5, prn=print_pkt)
+  File "/usr/local/lib/python3.8/dist-packages/scapy/sendrecv.py", line 1036, in sniff
+    sniffer._run(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scapy/sendrecv.py", line 906, in _run
+    sniff_sockets[L2socket(type=ETH_P_ALL, iface=iface,
+  File "/usr/local/lib/python3.8/dist-packages/scapy/arch/linux.py", line 398, in __init__
+    self.ins = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(type))  # noqa: E501
+  File "/usr/lib/python3.8/socket.py", line 231, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ sudo python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+^Z
+[1]+  Stopped                 sudo python3 sniff.py
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ fg
+sudo python3 sniff.py
+^C[10/09/23]seed@VM:~/.../Sniff_Spoof$ fg
+bash: fg: current: no such job
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ sudo python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+^CTraceback (most recent call last):
+  File "sniff.py", line 17, in <module>
+    pkt[2].show2()
+  File "/usr/local/lib/python3.8/dist-packages/scapy/plist.py", line 133, in __getitem__
+    return self.res.__getitem__(item)
+IndexError: list index out of range
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ sudo python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+^CTraceback (most recent call last):
+  File "sniff.py", line 17, in <module>
+    pkt[2].show2()
+  File "/usr/local/lib/python3.8/dist-packages/scapy/plist.py", line 133, in __getitem__
+    return self.res.__getitem__(item)
+IndexError: list index out of range
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ ^C
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ ls
+icmp_spoof.py  sniff.py  sniff_spoof_icmp.py  udp_spoof.py
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ cd ..
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ ls
+docker-compose.yml  Sniff_Spoof  Sniff_Spoof.zip  volumes
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ cd volumes/
+[10/09/23]seed@VM:~/.../volumes$ cp ../Sniff_Spoof/sniff.py .
+cp: cannot create regular file './sniff.py': Permission denied
+[10/09/23]seed@VM:~/.../volumes$ sudo cp ../Sniff_Spoof/sniff.py .
+[10/09/23]seed@VM:~/.../volumes$ ls
+sniff.py
+[10/09/23]seed@VM:~/.../volumes$ sudo gedit sniff.py 
+
+(gedit:12348): Tepl-WARNING **: 20:35:47.148: GVfs metadata is not supported. Fallback to TeplMetadataManager. Either GVfs is not correctly installed or GVfs metadata are not supported on this platform. In the latter case, you should configure Tepl with --disable-gvfs-metadata.
+[10/09/23]seed@VM:~/.../volumes$ python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+Traceback (most recent call last):
+  File "sniff.py", line 12, in <module>
+    pkt = sniff(filter='icmp',iface="br-3cb06be4a02f", prn=print_pkt)
+  File "/usr/local/lib/python3.8/dist-packages/scapy/sendrecv.py", line 1036, in sniff
+    sniffer._run(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/scapy/sendrecv.py", line 906, in _run
+    sniff_sockets[L2socket(type=ETH_P_ALL, iface=iface,
+  File "/usr/local/lib/python3.8/dist-packages/scapy/arch/linux.py", line 398, in __init__
+    self.ins = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(type))  # noqa: E501
+  File "/usr/lib/python3.8/socket.py", line 231, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+[10/09/23]seed@VM:~/.../volumes$ 
+
+---------------------------------
+COMMAND PROMPT 2
+[10/09/23]seed@VM:~/.../volumes$ cd ..
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ ls
+docker-compose.yml  Sniff_Spoof  Sniff_Spoof.zip  volumes
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ docker-compose build
+attacker uses an image, skipping
+Victim uses an image, skipping
+User1 uses an image, skipping
+User2 uses an image, skipping
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ docker-compose up
+user1-10.9.0.6 is up-to-date
+seed-attacker is up-to-date
+user2-10.9.0.7 is up-to-date
+victim-10.9.0.5 is up-to-date
+Attaching to user1-10.9.0.6, seed-attacker, user2-10.9.0.7, victim-10.9.0.5
+user1-10.9.0.6 |  * Starting internet superserver inetd                  [ OK ] 
+user2-10.9.0.7 |  * Starting internet superserver inetd                  [ OK ] 
+victim-10.9.0.5 |  * Starting internet superserver inetd                 [ OK ] 
+
+---------------------------------
+COMMAND PROMPT 3
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ dockps
+425a5e5773a4  user1-10.9.0.6
+4a538ce8952a  seed-attacker
+e58b621948b8  user2-10.9.0.7
+b65fe4ffefe8  victim-10.9.0.5
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ docksh 4a
+root@VM:/# cd volumes/
+root@VM:/volumes# ls
+sniff.py
+root@VM:/volumes# ifconfig 
+br-3cb06be4a02f: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.9.0.1  netmask 255.255.255.0  broadcast 10.9.0.255
+        inet6 fe80::42:3ff:fe25:761f  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:03:25:76:1f  txqueuelen 0  (Ethernet)
+        RX packets 8  bytes 560 (560.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 134  bytes 12412 (12.4 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:fe:35:b3:ac  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::8cf9:1918:9dc:7172  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:6b:39:e6  txqueuelen 1000  (Ethernet)
+        RX packets 107021  bytes 114578317 (114.5 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 42360  bytes 4665452 (4.6 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 15364  bytes 1442545 (1.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 15364  bytes 1442545 (1.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth9314259: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::d008:3fff:fe0c:d4ae  prefixlen 64  scopeid 0x20<link>
+        ether d2:08:3f:0c:d4:ae  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 216  bytes 20500 (20.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth39aa4f1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::2830:5fff:fe84:3556  prefixlen 64  scopeid 0x20<link>
+        ether 2a:30:5f:84:35:56  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 217  bytes 20630 (20.6 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+veth69442df: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::7876:23ff:fe9b:8f68  prefixlen 64  scopeid 0x20<link>
+        ether 7a:76:23:9b:8f:68  txqueuelen 0  (Ethernet)
+        RX packets 8  bytes 672 (672.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 222  bytes 20828 (20.8 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+root@VM:/volumes# ^C
+root@VM:/volumes# ^C
+root@VM:/volumes# python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+###[ Ethernet ]### 
+  dst       = 02:42:03:25:76:1f
+  src       = 02:42:0a:09:00:05
+  type      = IPv4
+###[ IP ]### 
+     version   = 4
+     ihl       = 5
+     tos       = 0x0
+     len       = 84
+     id        = 58473
+     flags     = DF
+     frag      = 0
+     ttl       = 64
+     proto     = icmp
+     chksum    = 0x381e
+     src       = 10.9.0.5
+     dst       = 10.10.10.10
+     \options   \
+###[ ICMP ]### 
+        type      = echo-request
+        code      = 0
+        chksum    = 0x6655
+        id        = 0x2e
+        seq       = 0x2
+###[ Raw ]### 
+           load      = ';\x9c$e\x00\x00\x00\x00r\xa6\x00\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !"#$%&\'()*+,-./01234567'
+
+###[ Ethernet ]### 
+  dst       = 02:42:03:25:76:1f
+  src       = 02:42:0a:09:00:05
+  type      = IPv4
+###[ IP ]### 
+     version   = 4
+     ihl       = 5
+     tos       = 0x0
+     len       = 84
+     id        = 58473
+     flags     = DF
+     frag      = 0
+     ttl       = 64
+     proto     = icmp
+     chksum    = 0x381e
+     src       = 10.9.0.5
+     dst       = 10.10.10.10
+     \options   \
+###[ ICMP ]### 
+        type      = echo-request
+        code      = 0
+        chksum    = 0x6655
+        id        = 0x2e
+        seq       = 0x2
+###[ Raw ]### 
+           load      = ';\x9c$e\x00\x00\x00\x00r\xa6\x00\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !"#$%&\'()*+,-./01234567'
+
+root@VM:/volumes# ^C
+root@VM:/volumes# cat sniff.py 
+#!/usr/bin/python3
+from scapy.all import *
+
+print("SNIFFING PACKETS.........")
+print("hi")
+def print_pkt(pkt):
+   print("Source IP:", pkt[IP].src)
+   print("Destination IP:", pkt[IP].dst)
+   print("Protocol:", pkt[IP].proto)
+   print("\n")
+
+pkt = sniff(filter='icmp',iface="br-3cb06be4a02f", prn=print_pkt)
+
+pkt[2].show2()
+root@VM:/volumes# python3 sniff.py 
+SNIFFING PACKETS.........
+hi
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+
+
+
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+Source IP: 10.9.0.5
+Destination IP: 10.10.10.10
+Protocol: 1
+
+
+Source IP: 10.10.10.10
+Destination IP: 10.9.0.5
+Protocol: 1
+
+
+
+
+^C###[ Ethernet ]### 
+  dst       = 02:42:03:25:76:1f
+  src       = 02:42:0a:09:00:05
+  type      = IPv4
+###[ IP ]### 
+     version   = 4
+     ihl       = 5
+     tos       = 0x0
+     len       = 84
+     id        = 3132
+     flags     = DF
+     frag      = 0
+     ttl       = 64
+     proto     = icmp
+     chksum    = 0x104c
+     src       = 10.9.0.5
+     dst       = 10.10.10.10
+     \options   \
+###[ ICMP ]### 
+        type      = echo-request
+        code      = 0
+        chksum    = 0xffb3
+        id        = 0x2f
+        seq       = 0x2
+###[ Raw ]### 
+           load      = '\x8e\x9c$e\x00\x00\x00\x00\x80F\x06\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !"#$%&\'()*+,-./01234567'
+
+root@VM:/volumes# dockps
+bash: dockps: command not found
+root@VM:/volumes# 
+
+
+
+---------------------------------
+COMMAND PROMPT 4
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ dockps
+425a5e5773a4  user1-10.9.0.6
+4a538ce8952a  seed-attacker
+e58b621948b8  user2-10.9.0.7
+b65fe4ffefe8  victim-10.9.0.5
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ docksh b6
+root@b65fe4ffefe8:/# ping 10.10.10.10
+PING 10.10.10.10 (10.10.10.10) 56(84) bytes of data.
+64 bytes from 10.10.10.10: icmp_seq=1 ttl=59 time=8.98 ms
+64 bytes from 10.10.10.10: icmp_seq=2 ttl=59 time=3.27 ms
+64 bytes from 10.10.10.10: icmp_seq=3 ttl=59 time=6.83 ms
+64 bytes from 10.10.10.10: icmp_seq=4 ttl=59 time=5.76 ms
+64 bytes from 10.10.10.10: icmp_seq=5 ttl=59 time=3.85 ms
+64 bytes from 10.10.10.10: icmp_seq=6 ttl=59 time=3.56 ms
+64 bytes from 10.10.10.10: icmp_seq=7 ttl=59 time=4.24 ms
+64 bytes from 10.10.10.10: icmp_seq=8 ttl=59 time=4.83 ms
+64 bytes from 10.10.10.10: icmp_seq=9 ttl=59 time=3.83 ms
+64 bytes from 10.10.10.10: icmp_seq=10 ttl=59 time=5.23 ms
+64 bytes from 10.10.10.10: icmp_seq=11 ttl=59 time=5.48 ms
+64 bytes from 10.10.10.10: icmp_seq=12 ttl=59 time=4.12 ms
+64 bytes from 10.10.10.10: icmp_seq=13 ttl=59 time=3.49 ms
+64 bytes from 10.10.10.10: icmp_seq=14 ttl=59 time=4.69 ms
+64 bytes from 10.10.10.10: icmp_seq=15 ttl=59 time=4.23 ms
+64 bytes from 10.10.10.10: icmp_seq=16 ttl=59 time=5.37 ms
+64 bytes from 10.10.10.10: icmp_seq=17 ttl=59 time=3.99 ms
+64 bytes from 10.10.10.10: icmp_seq=18 ttl=59 time=7.70 ms
+64 bytes from 10.10.10.10: icmp_seq=19 ttl=59 time=5.47 ms
+64 bytes from 10.10.10.10: icmp_seq=20 ttl=59 time=5.32 ms
+64 bytes from 10.10.10.10: icmp_seq=21 ttl=59 time=3.46 ms
+64 bytes from 10.10.10.10: icmp_seq=22 ttl=59 time=3.87 ms
+64 bytes from 10.10.10.10: icmp_seq=23 ttl=59 time=3.69 ms
+64 bytes from 10.10.10.10: icmp_seq=24 ttl=59 time=4.43 ms
+64 bytes from 10.10.10.10: icmp_seq=25 ttl=59 time=3.89 ms
+64 bytes from 10.10.10.10: icmp_seq=26 ttl=59 time=3.47 ms
+64 bytes from 10.10.10.10: icmp_seq=27 ttl=59 time=4.65 ms
+64 bytes from 10.10.10.10: icmp_seq=28 ttl=59 time=3.64 ms
+64 bytes from 10.10.10.10: icmp_seq=29 ttl=59 time=4.54 ms
+64 bytes from 10.10.10.10: icmp_seq=30 ttl=59 time=4.20 ms
+64 bytes from 10.10.10.10: icmp_seq=31 ttl=59 time=3.78 ms
+64 bytes from 10.10.10.10: icmp_seq=32 ttl=59 time=3.65 ms
+64 bytes from 10.10.10.10: icmp_seq=33 ttl=59 time=4.51 ms
+64 bytes from 10.10.10.10: icmp_seq=34 ttl=59 time=3.55 ms
+64 bytes from 10.10.10.10: icmp_seq=35 ttl=59 time=4.15 ms
+64 bytes from 10.10.10.10: icmp_seq=36 ttl=59 time=4.01 ms
+64 bytes from 10.10.10.10: icmp_seq=37 ttl=59 time=4.86 ms
+64 bytes from 10.10.10.10: icmp_seq=38 ttl=59 time=3.67 ms
+64 bytes from 10.10.10.10: icmp_seq=39 ttl=59 time=4.86 ms
+64 bytes from 10.10.10.10: icmp_seq=40 ttl=59 time=3.72 ms
+64 bytes from 10.10.10.10: icmp_seq=41 ttl=59 time=3.77 ms
+64 bytes from 10.10.10.10: icmp_seq=42 ttl=59 time=3.86 ms
+64 bytes from 10.10.10.10: icmp_seq=43 ttl=59 time=3.67 ms
+64 bytes from 10.10.10.10: icmp_seq=44 ttl=59 time=4.57 ms
+64 bytes from 10.10.10.10: icmp_seq=45 ttl=59 time=4.40 ms
+64 bytes from 10.10.10.10: icmp_seq=46 ttl=59 time=3.92 ms
+64 bytes from 10.10.10.10: icmp_seq=47 ttl=59 time=3.84 ms
+64 bytes from 10.10.10.10: icmp_seq=48 ttl=59 time=4.46 ms
+^C
+--- 10.10.10.10 ping statistics ---
+48 packets transmitted, 48 received, 0% packet loss, time 47153ms
+rtt min/avg/max/mdev = 3.272/4.443/8.979/1.088 ms
+root@b65fe4ffefe8:/# ping 10.10.10.10
+PING 10.10.10.10 (10.10.10.10) 56(84) bytes of data.
+64 bytes from 10.10.10.10: icmp_seq=1 ttl=59 time=6.28 ms
+64 bytes from 10.10.10.10: icmp_seq=2 ttl=59 time=4.24 ms
+64 bytes from 10.10.10.10: icmp_seq=3 ttl=59 time=3.95 ms
+64 bytes from 10.10.10.10: icmp_seq=4 ttl=59 time=6.68 ms
+64 bytes from 10.10.10.10: icmp_seq=5 ttl=59 time=4.28 ms
+64 bytes from 10.10.10.10: icmp_seq=6 ttl=59 time=6.42 ms
+64 bytes from 10.10.10.10: icmp_seq=7 ttl=59 time=4.92 ms
+64 bytes from 10.10.10.10: icmp_seq=8 ttl=59 time=5.43 ms
+64 bytes from 10.10.10.10: icmp_seq=9 ttl=59 time=4.70 ms
+64 bytes from 10.10.10.10: icmp_seq=10 ttl=59 time=3.77 ms
+64 bytes from 10.10.10.10: icmp_seq=11 ttl=59 time=4.11 ms
+64 bytes from 10.10.10.10: icmp_seq=12 ttl=59 time=5.60 ms
+64 bytes from 10.10.10.10: icmp_seq=13 ttl=59 time=3.91 ms
+64 bytes from 10.10.10.10: icmp_seq=14 ttl=59 time=5.51 ms
+64 bytes from 10.10.10.10: icmp_seq=15 ttl=59 time=4.60 ms
+^C
+--- 10.10.10.10 ping statistics ---
+15 packets transmitted, 15 received, 0% packet loss, time 14031ms
+rtt min/avg/max/mdev = 3.770/4.959/6.676/0.939 ms
+root@b65fe4ffefe8:/# 
+
+
+---------------------------------
+COMMAND PROMPT 5
+
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ dockps
+425a5e5773a4  user1-10.9.0.6
+4a538ce8952a  seed-attacker
+e58b621948b8  user2-10.9.0.7
+b65fe4ffefe8  victim-10.9.0.5
+[10/09/23]seed@VM:~/.../Sniff_Spoof$ 
+
+---------------------------------
+COMMAND PROMPT 6
+---------------------------------
+COMMAND PROMPT 7

@@ -1,0 +1,10 @@
+Important: 
+
+to best practice the smart contract techniques, you are encouraged to apply a MetaMask account and add  MetaMask to your browser as an extension; see https://metamask.io/
+Then, please try to obtain some test coin from faucet on Internet. Here are sample sites:
+            https://www.allthatnode.com/faucet/ethereum.dsrv
+
+           https://sepolia-faucet.pk910.de/           
+
+Our experiment platform will be 
+http://remix.ethereum.org/

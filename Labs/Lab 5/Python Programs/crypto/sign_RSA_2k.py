@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+
+from Crypto.Signature import pss
+from Crypto.Hash import SHA256
+from Crypto.PublicKey import RSA
+
+message=b'I owe you $2000'
+key_str=open("private.pem").read()
+key=RSA.import_key(key_str, passphrase="abcdefgh")
+h=SHA256.new(message)
+print(h.hexdigest())
+signer=pss.new(key)
+sig=signer.sign(h)
+open("signature2k.bin", "wb").write(sig)
+
+
