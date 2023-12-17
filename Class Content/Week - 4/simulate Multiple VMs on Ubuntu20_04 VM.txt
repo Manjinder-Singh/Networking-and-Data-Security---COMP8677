@@ -1,0 +1,40 @@
+Before you start, I assume you are now on Ubuntu20.04 VM. Just remind that the  password for seed account (if you need) is dees. 
+
+0. First download the Sniff_Spoof.zip directly from firefox on your seedlab VM. Then from Downloads folder, copy to your working directory (better do this on the command line, to    avoid any change access right being changed during your copying which will affect your experiment).   
+
+Then, do the following to simulate multiple VMs on the LAN within one  SEEDUbuntu20_04
+1. copy docker-compose.yml to the current directory  // different Lab will use different docker file. The current file works  for Sniffing and TCP attack
+2. docker-compose build  //this will build the container image: simulated machines; 
+                         // use docker-compose build --no-cache: this case will delete the existing simulated VM and simulate from scratch.  
+3. docker-compose up    //this will start the containers: the simulated machines are running
+3. dockps // this will list all of simulated machines
+
+/* This is sample output
+$dockps
+
+1b322346734f attacker    
+0af4ea7a3e2e user1-10.9.0.6
+9652715c8e0a user2-10.9.0.7
+b1004832e275 victim-10.9.0.5   // this is (ID,  host_name_IP) pair
+                                  Here victim is the telnet server and user1 and user2 can be telnet clients. 
+*/
+
+4. docksh 96    //This is to get the bash command line for machine of ID 96***. Then you will see the following
+   root@9652715c8e0a:/#
+
+/* Now you can say now you are working on the simulated machine 9652715c8e0a; run $ifconfig and you will ip address like 10.9.0.7
+You can run other simulated machines using different xterminals. So now you have several machines to work on*/
+/*In these simulated VMs, attacker is a real machine and can run any command just as in a real Ubuntu OS. The other three are not real. 
+ But they are prepared so that telnet is allowed so that we can conduct TCP attack on telnet and do sniffing-and-spoofing. */
+
+5. /note: ./volumes is directory shared with attacker (see the docker-compose.yml). You need to put your attack python programs in this directory so that 
+the attacker VM can see and run them. 
+
+
+6. Emphasize again: victim (telnet server), user1/user2 (telnet client) are very simple VM. Attacker VM is full functional VM. 
+   You sniff the traffic on the main machine, choosing the interface of form "br-****" (the interface connecting to the simulated LAB)
+
+7. when you finish your lab, run 
+    $ docker-compose down
+   on your directory of docker-compose.yml to shutdown all the simulated machines. 
+   Do not just shutdown by closing the terminal that could leave some incorrect state and will affect your future execution. 
